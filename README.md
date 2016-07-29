@@ -39,7 +39,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: tsyki.centos77-setup, auth_key_path:~/.ssh/id_rsa.pub , main_user_name: piyo, main_user_password: $6$rounds=656000$kXdiHg0O8QL0FcEa$rbTKjamQQduBhT2NG2yoXt7OJCeHTuthq/.i.ALT4ViVhpldcLcWDQWe41sTdBor294gIhv5Nsl3fCJIC33V50, ssh_port: 20022 }
+         - { role: tsyki.centos7-setup, auth_key_path:~/.ssh/id_rsa.pub , main_user_name: piyo, main_user_password: $6$rounds=656000$kXdiHg0O8QL0FcEa$rbTKjamQQduBhT2NG2yoXt7OJCeHTuthq/.i.ALT4ViVhpldcLcWDQWe41sTdBor294gIhv5Nsl3fCJIC33V50, ssh_port: 20022 }
 
 License
 -------
