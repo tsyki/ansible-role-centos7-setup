@@ -1,0 +1,24 @@
+    - name: create .ssh directory
+      file: path=/home/{{main_user_name}}/.ssh owner={{main_user_name}} mode=700 state=directory
+
+    - name: send ssh public key
+      copy: src={{auth_key_path}} dest=/home/{{main_user_name}}/.ssh/authorized_keys owner={{main_user_name}} mode=400 
+
+    - name: change ssh port
+      lineinfile: dest=/etc/ssh/sshd_config regexp="^#Port " line="Port {{ ssh_port }}" state=present backrefs=true backup=yes
+
+    - name: disable PermitRootLogin
+      lineinfile: dest=/etc/ssh/sshd_config regexp="^#PermitRootLogin" line="PermitRootLogin no" state=present backrefs=true
+
+    - name: disable PasswordAuthentication
+      lineinfile: dest=/etc/ssh/sshd_config regexp="^#PasswordAuthentication" line="PasswordAuthentication no" state=present backup=yes backrefs=true
+
+    - name: enable http port
+      firewalld: service=http permanent=true immediate=yes state=enabled
+    - name: enable new ssh port
+      firewalld: port={{ ssh_port }}/tcp permanent=true immediate=yes state=enabled
+    - name: disable old ssh port
+      firewalld: service=ssh permanent=true immediate=yes state=disabled
+       
+    - name: restart sshd
+      service: name=sshd state=restarted

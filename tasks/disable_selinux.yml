@@ -1,0 +1,5 @@
+- name: disable SELinux
+  shell: setenforce 0
+- name: disable SELinux permanent
+  selinux: state=disabled
+

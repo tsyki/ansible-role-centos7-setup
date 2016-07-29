@@ -1,0 +1,6 @@
+main_user_name: snow
+# NOTE: Password must be hashed. this is created with:
+#     # python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass())"
+main_user_password: $6$rounds=656000$wfMxObfTMxLm4JhF$NMA58Jf/uaU6z.t8llVqHywXd/IEly5A7oa.lSaRdwSajLB2vP/ikeN/AIWEUgDc7nQ.c7HTvay/2.yuMeuYz1
+ssh_port: 10022
+auth_key_path: id_rsa.pub

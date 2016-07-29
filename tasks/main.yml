@@ -1,0 +1,3 @@
+- include: disable_selinux.yml
+- include: add_main_user.yml
+- include: setup_ssh_and_firewall.yml
