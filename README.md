@@ -38,8 +38,14 @@ Example Playbook
 ----------------
 
     - hosts: servers
+      user: root
+      vars_prompt:
+        - name: main_user_password
+          prompt: "Input newuser passowrd"
+          encrypt: sha512_crypt
+          confirm: yes
       roles:
-         - { role: tsyki.centos7-setup, auth_key_path:~/.ssh/id_rsa.pub , main_user_name: piyo, main_user_password: $6$rounds=656000$kXdiHg0O8QL0FcEa$rbTKjamQQduBhT2NG2yoXt7OJCeHTuthq/.i.ALT4ViVhpldcLcWDQWe41sTdBor294gIhv5Nsl3fCJIC33V50, ssh_port: 20022 }
+         - { role: tsyki.centos7-setup, auth_key_path: ~/.ssh/id_rsa.pub , main_user_name: piyo, ssh_port: 20022 }
 
 License
 -------
