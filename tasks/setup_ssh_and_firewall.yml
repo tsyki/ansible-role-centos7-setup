@@ -17,8 +17,9 @@
       firewalld: service=http permanent=true immediate=yes state=enabled
     - name: enable new ssh port
       firewalld: port={{ ssh_port }}/tcp permanent=true immediate=yes state=enabled
+    # NOTE If immeditate is yes, fail after task.
     - name: disable old ssh port
-      firewalld: service=ssh permanent=true immediate=yes state=disabled
+      firewalld: service=ssh permanent=true immediate=no state=disabled
        
     - name: restart sshd
       service: name=sshd state=restarted
